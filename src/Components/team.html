@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PR Sparkz | Revolutionary Social Media Innovation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Exo 2', sans-serif;
+        }
+        
+        :root {
+            --sparkz-blue: #00a2ff;
+            --sparkz-purple: #7d2ae8;
+            --sparkz-pink: #ff1b6b;
+            --sparkz-cyan: #00f2fe;
+            --dark-bg: #0a0a14;
+            --darker-bg: #05050c;
+        }
+        
+        body {
+            background-color: var(--darker-bg);
+            color: #f5f5f5;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 162, 255, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(125, 42, 232, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(255, 27, 107, 0.1) 0%, transparent 25%);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--sparkz-purple) 0%, var(--darker-bg) 95%);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(45deg, var(--sparkz-cyan), var(--sparkz-blue), var(--sparkz-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            position: relative;
+            animation: sparkle 3s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { text-shadow: 0 0 5px rgba(0, 242, 254, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(0, 242, 254, 0.8), 0 0 30px rgba(0, 242, 254, 0.6); }
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--sparkz-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--darker-bg);
+            background: var(--sparkz-cyan);
+            box-shadow: 0 0 15px var(--sparkz-cyan);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--sparkz-cyan), var(--sparkz-blue), var(--sparkz-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sparkz-purple), var(--sparkz-cyan));
+            border-radius: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: #ccc;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        .sparkz-badge {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--sparkz-cyan);
+            border-radius: 30px;
+            color: var(--sparkz-cyan);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 5px var(--sparkz-cyan); }
+            50% { box-shadow: 0 0 20px var(--sparkz-cyan); }
+        }
+        
+        .team-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: linear-gradient(145deg, #0f0f1f 0%, #131325 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(125, 42, 232, 0.3);
+            z-index: 1;
+        }
+        
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--sparkz-blue), var(--sparkz-pink), var(--sparkz-purple));
+            z-index: 2;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(125, 42, 232, 0.3);
+        }
+        
+        .member-image {
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: grayscale(0.3);
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.08);
+            filter: grayscale(0);
+        }
+        
+        .member-info {
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .member-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--sparkz-cyan);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .member-info .role {
+            color: var(--sparkz-pink);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .member-info p {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--sparkz-purple), var(--sparkz-pink));
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+        
+        .social-links a:hover::before {
+            animation: shine 1s forwards;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 27, 107, 0.4);
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+        
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--sparkz-blue), var(--sparkz-cyan));
+            top: 10%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, var(--sparkz-pink), var(--sparkz-purple));
+            bottom: 15%;
+            right: 10%;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        .shape-3 {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--sparkz-cyan), var(--sparkz-blue));
+            top: 50%;
+            left: 5%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--sparkz-cyan);
+            border-radius: 50%;
+            animation: sparkle 3s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+            50% { opacity: 1; transform: translateY(-20px) scale(1); }
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--sparkz-purple) 100%);
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-top: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer p {
+            color: var(--sparkz-cyan);
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--sparkz-blue), var(--sparkz-pink));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 162, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 27, 107, 0.5);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .holographic-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(0, 242, 254, 0.1) 0%, 
+                rgba(0, 162, 255, 0.1) 25%, 
+                rgba(125, 42, 232, 0.1) 50%, 
+                rgba(255, 27, 107, 0.1) 75%, 
+                rgba(0, 242, 254, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: holographic 15s ease infinite;
+            z-index: -1;
+        }
+        
+        @keyframes holographic {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- <header>
+        <div class="logo">
+            <i class="fas fa-bolt"></i>
+            <span>PR SPARKZ</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Innovations</a></li>
+                <li><a href="#">Sparkz Tech</a></li>
+                <li><a href="#">Connect</a></li>
+            </ul>
+        </nav>
+    </header>  -->
+    
+    <div class="hero">
+        <h1>PR Team</h1>
+        <p>Meet the visionaries at PR Sparkz who are redefining social media through cutting-edge technology and unprecedented creativity. We don't just follow trends—we create them.</p>
+        <div class="sparkz-badge">IMAGINATION ACTIVATED</div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="particles" id="particles"></div>
+    </div>
+    
+    <div class="team-container">
+        <div class="team-grid">
+            <!-- Team Member 1 -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="Alex Morgan">
+                </div>
+                <div class="member-info">
+                    <h3>Alex Morgan</h3>
+                    <span class="role">Quantum Creative Director</span>
+                    <p>Alex transforms ideas into engaging visual stories that capture audiences and drive brand recognition across platforms.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 2 -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Marcus Johnson">
+                </div>
+                <div class="member-info">
+                    <h3>Marcus Johnson</h3>
+                    <span class="role">AI Strategy Architect</span>
+                    <p>Marcus crafts data-driven social media strategies that align with business goals and deliver measurable results.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 3 -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="Sophia Chen">
+                </div>
+                <div class="member-info">
+                    <h3>Sophia Chen</h3>
+                    <span class="role">Neural Content Engineer</span>
+                    <p>Sophia designs compelling content ecosystems that engage audiences and build community around brands.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 4 -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="David Rodriguez">
+                </div>
+                <div class="member-info">
+                    <h3>David Rodriguez</h3>
+                    <span class="role">Growth Hacker</span>
+                    <p>David specializes in audience growth and engagement tactics that expand brand reach and community impact.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 5 -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Lena Petrova">
+                </div>
+                <div class="member-info">
+                    <h3>Lena Petrova</h3>
+                    <span class="role">Data Alchemist</span>
+                    <p>Lena turns data into insights, measuring campaign performance and optimizing strategies for maximum ROI.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Member 6 -->
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Maya Thompson">
+                </div>
+                <div class="member-info">
+                    <h3>Maya Thompson</h3>
+                    <span class="role">Community Architect</span>
+                    <p>Maya builds and nurtures brand communities, fostering meaningful connections between brands and their audiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="holographic-effect"></div>
+        <p>READY TO IGNITE YOUR SOCIAL PRESENCE?</p>
+        <a href="#" class="cta-button">Generate Sparkz</a>
+    </footer>
+    
+    <script>
+        // Add subtle animation to team members on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamMembers = document.querySelectorAll('.team-member');
+            
+            teamMembers.forEach(member => {
+                member.style.opacity = '0';
+                member.style.transform = 'translateY(50px)';
+            });
+            
+            setTimeout(() => {
+                teamMembers.forEach((member, index) => {
+                    setTimeout(() => {
+                        member.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        member.style.opacity = '1';
+                        member.style.transform = 'translateY(0)';
+                    }, 200 * index);
+                });
+            }, 500);
+            
+            // Create particles
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                // Random size
+                const size = Math.random() * 4 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        });
+    </script>
+</body>
+</html>

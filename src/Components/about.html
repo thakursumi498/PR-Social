@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Digital Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --accent: #10b981;
+            --dark: #1f2937;
+            --darker: #111827;
+            --light: #f9fafb;
+            --lighter: #ffffff;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--darker);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .about-section {
+            position: relative;
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        .about-container {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+        
+        .pre-title {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 100px;
+        }
+        
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.35rem;
+            color: var(--gray-light);
+            max-width: 800px;
+            margin: 2rem auto 0;
+            line-height: 1.6;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 5rem;
+            margin-bottom: 6rem;
+        }
+        
+        @media (min-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 8rem;
+            }
+        }
+        
+        .visual-container {
+            position: relative;
+            perspective: 1200px;
+        }
+        
+        .main-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 28px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 
+                        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .main-card::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: var(--gradient);
+            opacity: 0.1;
+            top: -25%;
+            left: -25%;
+            z-index: -1;
+            transform: rotate(-5deg);
+        }
+        
+        .main-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--lighter);
+        }
+        
+        .main-card p {
+            color: var(--gray-light);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: rgba(17, 24, 39, 0.9);
+            border-radius: 20px;
+            padding: 1.75rem;
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            height: 140px;
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 20;
+        }
+        
+        .floating-card:nth-child(2) {
+            bottom: -30px;
+            right: -30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .floating-card:nth-child(3) {
+            top: -30px;
+            left: -30px;
+            background: rgba(17, 24, 39, 0.95);
+            color: white;
+        }
+        
+        .floating-card .number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .floating-card .label {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .content-container h3 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--lighter);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .content-container h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .description {
+            color: var(--gray-light);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: rgba(17, 24, 39, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+        }
+        
+        .feature-icon.data {
+            background-color: rgba(99, 102, 241, 0.15);
+            color: var(--primary);
+        }
+        
+        .feature-icon.speed {
+            background-color: rgba(236, 72, 153, 0.15);
+            color: var(--secondary);
+        }
+        
+        .feature-icon.team {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--accent);
+        }
+        
+        .feature-content h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--lighter);
+            font-size: 1.25rem;
+        }
+        
+        .feature-content p {
+            font-size: 1rem;
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--gradient);
+            color: white;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 14px;
+            text-decoration: none;
+            box-shadow: 0 6px 15px -3px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px -5px rgba(99, 102, 241, 0.5);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 8rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: var(--gradient);
+            transition: height 0.5s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-item:hover::before {
+            height: 100%;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            color: var(--gray-light);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        /* Animation classes */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        .floating-card:nth-child(2) {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-card:nth-child(3) {
+            animation: float 7s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        
+        .feature-icon:hover {
+            transform: scale(1.1) rotate(8deg);
+        }
+        
+        /* New elements */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background: var(--gradient);
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -150px;
+            background: var(--primary);
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -100px;
+            background: var(--secondary);
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 70%;
+            background: var(--accent);
+        }
+        
+        .timeline-container {
+            margin-top: 8rem;
+            position: relative;
+        }
+        
+        .timeline-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: var(--lighter);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient);
+        }
+        
+        .timeline-item {
+            width: 50%;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 4rem;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 4rem;
+        }
+        
+        .timeline-content {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-desc {
+            color: var(--gray-light);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 20px;
+            }
+            
+            .timeline-item:nth-child(odd)::after,
+            .timeline-item:nth-child(even)::after {
+                left: 20px;
+            }
+        }
+        
+        .client-logos {
+            margin-top: 8rem;
+            text-align: center;
+        }
+        
+        .client-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--lighter);
+        }
+        
+        .logos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .client-logo {
+            opacity: 0.7;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+            max-width: 120px;
+        }
+        
+        .client-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .content-grid {
+                gap: 3rem;
+            }
+            
+            .main-card {
+                height: 320px;
+                padding: 2rem;
+            }
+            
+            .floating-card {
+                width: 140px;
+                height: 110px;
+                padding: 1.25rem;
+            }
+            
+            .floating-card:nth-child(2) {
+                bottom: -15px;
+                right: -15px;
+            }
+            
+            .floating-card:nth-child(3) {
+                top: -15px;
+                left: -15px;
+            }
+            
+            .stats-grid {
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="about-section">
+        <div id="particles-js"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        
+        <div class="about-container">
+            <div class="section-header">
+                <span class="pre-title">Who We Are</span>
+                <h2 class="section-title">Redefining Digital Excellence</h2>
+                <p class="section-subtitle">
+                    We're a collective of visionary strategists, creative designers, and technical innovators 
+                    dedicated to transforming brands in the digital realm. Our mission is to create meaningful 
+                    digital experiences that drive growth and engagement.
+                </p>
+            </div>
+            
+            <div class="content-grid">
+                <div class="visual-container">
+                    <div class="main-card">
+                        <h3>Innovation Meets Results</h3>
+                        <p>With over half a decade of excellence, we've helped brands establish powerful digital presence and achieve remarkable growth.</p>
+                    </div>
+                    <div class="floating-card">
+                        <div class="number">250+</div>
+                        <div class="label">Successful Projects</div>
+                    </div>
+                    <div class="floating-card">
+                        <div class="number">98%</div>
+                        <div class="label">Client Satisfaction</div>
+                    </div>
+                </div>
+                
+                <div class="content-container">
+                    <h3>Our Vision & Approach</h3>
+                    <p class="description">
+                        Founded in 2018, our agency was born from a passion for digital innovation and a commitment to delivering measurable results. 
+                        We combine strategic thinking with creative excellence and technical expertise to create digital solutions that not only look 
+                        stunning but also drive real business growth.
+                    </p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon data">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Data-Driven Strategies</h4>
+                                <p>We leverage analytics and insights to inform every decision, ensuring maximum ROI for your digital initiatives.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon speed">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Accelerated Growth</h4>
+                                <p>Our proven methodologies deliver measurable results in record time, with most clients seeing impact within 30 days.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon team">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h4>Dedicated Partnership</h4>
+                                <p>We become an extension of your team, with your success as our absolute priority from strategy to execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button">
+                        Explore Our Work
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 8L21 12M21 12L17 16M21 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Client Retention</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">347%</div>
+                    <div class="stat-label">Average ROI</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50M+</div>
+                    <div class="stat-label">Audience Reached</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+            
+            <div class="timeline-container">
+                <h3 class="timeline-title">Our Journey</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2018</div>
+                            <p class="timeline-desc">Founded with a vision to revolutionize digital marketing through data-driven strategies.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2019</div>
+                            <p class="timeline-desc">Expanded our team and services, working with over 50 clients across various industries.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2020</div>
+                            <p class="timeline-desc">Pioneered remote digital strategies during the global shift to online business.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2022</div>
+                            <p class="timeline-desc">Reached milestone of 250+ successful projects and 98% client satisfaction rate.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-year">2023</div>
+                            <p class="timeline-desc">Launched AI-powered analytics division to deliver even more impactful insights for clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="client-logos">
+                <h3 class="client-title">Trusted By Industry Leaders</h3>
+                <div class="logos-container">
+                    <!-- These would be actual client logos in a real implementation -->
+                    <div class="client-logo" style="color: #fff; font-size: 1.5rem; font-weight: 700;">TECHNOLOGY</div>
+                    <div class="client-logo" style="color: #fff; font-size: 1.5rem; font-weight: 700;">FINANCE</div>
+                    <div class="client-logo" style="color: #fff; font-size: 1.5rem; font-weight: 700;">HEALTHCARE</div>
+                    <div class="client-logo" style="color: #fff; font-size: 1.5rem; font-weight: 700;">RETAIL</div>
+                    <div class="client-logo" style="color: #fff; font-size: 1.5rem; font-weight: 700;">EDUCATION</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Enhanced particles.js configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 100,
+                        "density": {
+                            "enable": true,
+                            "value_area": 1000
+                        }
+                    },
+                    "color": {
+                        "value": "#6366f1"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.4,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 6,
+                        "random": true,
+                        "anim": {
+                            "enable": true,
+                            "speed": 3,
+                            "size_min": 0.3,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 160,
+                        "color": "#6366f1",
+                        "opacity": 0.25,
+                        "width": 1.5
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 1.5,
+                        "direction": "none",
+                        "random": true,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": true,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 180,
+                            "line_linked": {
+                                "opacity": 0.8
+                            }
+                        },
+                        "push": {
+                            "particles_nb": 6
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+            
+            // Enhanced mouse move effect
+            const visualContainer = document.querySelector('.visual-container');
+            const mainCard = document.querySelector('.main-card');
+            const floatingCards = document.querySelectorAll('.floating-card');
+            
+            visualContainer.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = visualContainer.getBoundingClientRect();
+                const x = (e.clientX - left) / width - 0.5;
+                const y = (e.clientY - top) / height - 0.5;
+                
+                mainCard.style.transform = `rotateY(${x * 12}deg) rotateX(${y * -12}deg) scale(1.02)`;
+                
+                floatingCards.forEach((card, index) => {
+                    const speed = index === 0 ? 25 : 30;
+                    card.style.transform = `translateX(${x * speed}px) translateY(${y * speed}px) rotate(${x * 5}deg)`;
+                });
+            });
+            
+            visualContainer.addEventListener('mouseleave', () => {
+                mainCard.style.transform = 'rotateY(0deg) rotateX(0deg) scale(1)';
+                floatingCards.forEach(card => {
+                    card.style.transform = 'translateX(0px) translateY(0px) rotate(0deg)';
+                });
+            });
+            
+            // Animate stats on scroll
+            const statItems = document.querySelectorAll('.stat-item');
+            const statsSection = document.querySelector('.stats-grid');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.style.opacity = 1;
+                                item.style.transform = 'translateY(0)';
+                            }, index * 150);
+                        });
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(statsSection);
+            
+            // Set initial state for animation
+            statItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+        });
+    </script>
+</body>
+</html>
